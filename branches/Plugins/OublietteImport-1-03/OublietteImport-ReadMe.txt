@@ -18,4 +18,4 @@ minor issues regarding the GUI integration:
 I hope you find this plug-in still useful.
 
 Sebastian Schuberth <sschuberth@gmail.com>
-2006.mar.22
+2006.may.22
