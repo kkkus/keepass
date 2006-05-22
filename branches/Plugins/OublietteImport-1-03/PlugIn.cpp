@@ -38,6 +38,12 @@
 #include "Oubliette/OublietteFile.h"
 #include "PasswordDialog.h"
 
+// The first three digits of the plug-in version number match the KeePass
+// version number for which the plug-in was compiled. The last digit marks
+// the release number of the plug-in for this particular KeePass version.
+#define OUB_IMP_FORAPP  0x01000301
+#define OUB_IMP_VERSION 0x01000303
+
 #define PLUGIN_NAME "Oubliette Import Plug-In"
 #define GROUP_NAME "Imported from Oubliette"
 
@@ -54,10 +60,8 @@ KP_EXP BOOL KP_API KeePluginInit(const KP_APP_INFO* pAppInfo,KP_PLUGIN_INFO* pPl
     // Fill out the plug-in info structure.
     ZeroMemory(pPluginInfo,sizeof(*pPluginInfo));
 
-    //                          1.0.3.a
-    pPluginInfo->dwForAppVer=0x01000301;
-    //                          1.9.0.a
-    pPluginInfo->dwPluginVer=0x01090001;
+    pPluginInfo->dwForAppVer=OUB_IMP_FORAPP;
+    pPluginInfo->dwPluginVer=OUB_IMP_VERSION;
 
     _tcscpy(pPluginInfo->tszPluginName,_T(PLUGIN_NAME));
     _tcscpy(pPluginInfo->tszAuthor,_T("Sebastian Schuberth"));
@@ -65,7 +69,7 @@ KP_EXP BOOL KP_API KeePluginInit(const KP_APP_INFO* pAppInfo,KP_PLUGIN_INFO* pPl
     pPluginInfo->dwNumCommands=1;
     pPluginInfo->pMenuItems=(KP_MENU_ITEM*)g_menuItems;
 
-    g_menuItems[0].lpCommandString="&Oubliette OUB File...";
+    g_menuItems[0].lpCommandString=_T("&Oubliette OUB File...");
     g_menuItems[0].dwIcon=26;
 
     return TRUE;
